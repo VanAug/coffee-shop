@@ -23,3 +23,12 @@ class Coffee:
         if self.__dict__.get("_locked", False):
             raise AttributeError("Coffee instances are immutable")
         super().__setattr__(key, value)
+
+    #Coffee.orders
+    def orders(self):
+        from order import Order
+        return [order for order in Order.all if order.coffee == self]
+    
+    #Coffee.customers
+    def customers(self):
+        return list({order.customer for order in self.orders})
