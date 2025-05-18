@@ -22,3 +22,8 @@ class Customer:
     #Customer.coffees
     def coffees(self):
         return list({order.coffee for order in self.orders()})
+    
+    #Customer.create_order(coffee, price)
+    def create_order(self, coffee, price):
+        from order import Order
+        return Order(self, coffee, price)

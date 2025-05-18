@@ -32,3 +32,17 @@ class Coffee:
     #Coffee.customers
     def customers(self):
         return list({order.customer for order in self.orders})
+    
+    #Coffee.num_orders()
+    def num_orders(self):
+        return len(self.orders())
+
+    #Coffee.average_price()
+    def average_price(self):
+        orders = self.orders()
+
+        if not orders:
+            return 0
+        
+        total = sum(order.price for order in orders)
+        return round(total / len(orders), 2)
