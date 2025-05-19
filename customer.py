@@ -27,3 +27,30 @@ class Customer:
     def create_order(self, coffee, price):
         from order import Order
         return Order(self, coffee, price)
+    
+    #Customer.most_aficionado(coffee)
+    @classmethod
+    def most_aficionado(cls, coffee):
+        #get all coffee orders
+        orders = coffee.orders()
+        if not orders:
+            return None
+
+        #trck total spending per customer
+        customer_spending = {}
+        for order in orders:
+            customer = order.customer
+
+            if customer in customer_spending:
+                customer_spending[customer] += order.price
+            else:
+                customer_spending[customer] = order.price
+
+        #find customer with maximum spending
+        max_spending = max(customer_spending.values())
+        top_customers = [
+            customer for customer, total in customer_spending.items()
+            if total == max_spending
+        ]
+
+        return top_customers
