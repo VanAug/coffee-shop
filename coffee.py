@@ -17,7 +17,7 @@ class Coffee:
         if isinstance(name, str) and len(name) >= 3:
             self._name = name
         else:
-            return ValueError("Name must be a string")
+            raise ValueError("Name must be a string")
         
     def __setattr__(self, key, value):
         if self.__dict__.get("_locked", False):
@@ -31,7 +31,7 @@ class Coffee:
     
     #Coffee.customers
     def customers(self):
-        return list({order.customer for order in self.orders})
+        return list({order.customer for order in self.orders()})
     
     #Coffee.num_orders()
     def num_orders(self):

@@ -9,9 +9,9 @@ class Order:
     def __init__(self, customer, coffee, price):
        
        if not isinstance(customer, Customer):
-           raise TypeError("Customer must be an instance of customer!!")
+           raise TypeError("Customer must be an instance of customer.")
        if not isinstance(coffee, Coffee):
-           raise TypeError("Coffee must be an instance of coffee!!")
+           raise TypeError("Coffee must be an instance of coffee.")
        
        self.__dict__["_locked"] = False
 

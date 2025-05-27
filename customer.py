@@ -12,7 +12,7 @@ class Customer:
         if isinstance(name, str) and 1 <= len(name) <= 15:
             self._name = name
         else:
-            return ValueError("Name must be a string")
+            raise ValueError("Name must be a string")
 
     #Customer.orders
     def orders(self):
